@@ -1,6 +1,8 @@
 package com.iteso.sesion09;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,7 +76,8 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
         viewHolder.mPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showToast(v, i);
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+products.get(i).getPhone()));
+                v.getContext().startActivity(intent);
             }
         });
 

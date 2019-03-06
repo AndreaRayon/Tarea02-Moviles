@@ -55,15 +55,7 @@ public class ActivityMain extends AppCompatActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
         tabLayout.setupWithViewPager(mViewPager);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar.make(v, "Raplace with your own action",
-                        Snackbar.LENGTH_LONG).setAction("Action",
-                        null).show();
-            }
-        });
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
