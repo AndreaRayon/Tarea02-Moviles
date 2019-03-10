@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ActivityProduct">
+
+    <LinearLayout
+        android:id="@+id/activity_product_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="@dimen/appbar_padding_top"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/item_product_image"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerInside"
+            />
+
+        <EditText
+            android:layout_weight="1"
+            android:id="@+id/item_product_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:hint="@string/activity_product_title"
+            android:inputType="text"/>
+
+
+        <EditText
+            android:id="@+id/item_product_store"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/activity_product_store"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/item_product_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/activity_product_location"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/item_product_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/activity_product_phone"
+            android:inputType="phone"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/item_product_save"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_product_save"
+            android:onClick="save"/>
+
+        <Button
+            android:id="@+id/item_product_cancel"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/cardview_default_radius"
+            android:text="@string/activity_product_cancel"
+            android:onClick="cancel"/>
+    </LinearLayout>
+
+</RelativeLayout>

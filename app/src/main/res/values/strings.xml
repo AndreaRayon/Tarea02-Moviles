@@ -21,4 +21,10 @@
 <string name="sec_location">Guadalajara</string>
 <string name="third_location">Tlaquepaque</string>
 
+<string name="activity_product_save">Save</string>
+<string name="activity_product_cancel">Cancel</string>
+<string name="activity_product_title">Introduce Title...</string>
+<string name="activity_product_store">Introduce Store...</string>
+<string name="activity_product_location">Introduce Location...</string>
+<string name="activity_product_phone">Introduce Phone...</string>
 </resources>

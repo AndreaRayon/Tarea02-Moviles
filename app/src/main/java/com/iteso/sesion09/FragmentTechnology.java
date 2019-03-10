@@ -1,5 +1,6 @@
 package com.iteso.sesion09;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,10 +14,13 @@ import android.view.ViewGroup;
 import com.iteso.sesion09.beans.ItemProduct;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class FragmentTechnology extends Fragment {
+    private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     public FragmentTechnology() {}
+    ArrayList<ItemProduct> products = new ArrayList<>();
 
     @Nullable
     @Override
@@ -27,23 +31,37 @@ public class FragmentTechnology extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
 
-        ArrayList<ItemProduct> products = new ArrayList<>();
+
         products.add(new ItemProduct(getResources().getString(R.string.mac_title),
                                     getResources().getString(R.string.bestbuy_store),
                                     getResources().getString(R.string.bestbuy_phone),
                                     getResources().getString(R.string.first_location),
-                                    getResources().getDrawable(R.drawable.mac),
-                                    getResources().getDrawable(R.drawable.bestbuy)));
+                                    0,0,0));
 
         products.add(new ItemProduct(getResources().getString(R.string.aw_title),
                                     getResources().getString(R.string.bestbuy_store),
                                     getResources().getString(R.string.bestbuy_phone),
                                     getResources().getString(R.string.sec_location),
-                                    getResources().getDrawable(R.drawable.alienware),
-                                    getResources().getDrawable(R.drawable.bestbuy)));
+                                    0,0,0));
 
         AdapterProduct adapterProduct = new AdapterProduct(products);
         recyclerView.setAdapter(adapterProduct);
         return v;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        ItemProduct itemProduct = data.getParcelableExtra("ITEM");
+        Iterator<ItemProduct> itemProductIterator = products.iterator();
+        int i = 0;
+        while(itemProductIterator.hasNext()){
+            ItemProduct item = itemProductIterator.next();
+            if(item.getCode() == itemProduct.getCode()){
+                products.set(i, itemProduct);
+                break;
+            }
+            i++;
+        }
+        mAdapter.notifyDataSetChanged();
     }
 }

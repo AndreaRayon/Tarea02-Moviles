@@ -20,6 +20,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
 
     ArrayList<ItemProduct> products;
     private Context context;
+
     public AdapterProduct(ArrayList<ItemProduct> products){
         this.products = products;
     }
@@ -57,21 +58,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int i) {
         viewHolder.mTitle.setText(products.get(i).getName());
-        viewHolder.mTitle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showToast(v, i);
-            }
-        });
-
         viewHolder.mStore.setText(products.get(i).getStore());
-        viewHolder.mStore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showToast(v, i);
-            }
-        });
-
         viewHolder.mPhone.setText(products.get(i).getPhone());
         viewHolder.mPhone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,26 +69,39 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
         });
 
         viewHolder.mLocation.setText(products.get(i).getName());
-        viewHolder.mLocation.setOnClickListener(new View.OnClickListener() {
+
+        switch (products.get(i).getImg()){
+            case 0: viewHolder.mImage.setImageResource(R.drawable.mac); break;
+            case 1: viewHolder.mImage.setImageResource(R.drawable.alienware); break;
+            case 2: viewHolder.mImage.setImageResource(R.drawable.micro); break;
+            case 3: viewHolder.mImage.setImageResource(R.drawable.refrigerator); break;
+            case 4: viewHolder.mImage.setImageResource(R.drawable.sheets); break;
+            case 5: viewHolder.mImage.setImageResource(R.drawable.pillows); break;
+            default: viewHolder.mImage.setImageResource(R.drawable.mac); break;
+        }
+       switch (products.get(i).getImgStore()){
+           case 0: viewHolder.mImageStore.setImageResource(R.drawable.bestbuy); break;
+           case 1: viewHolder.mImageStore.setImageResource(R.drawable.liverpool); break;
+           default: viewHolder.mImageStore.setImageResource(R.drawable.bestbuy); break;
+       }
+        viewHolder.mEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showToast(v, i);
+                ItemProduct itemProduct = new ItemProduct(
+                        products.get(i).getName(),
+                        products.get(i).getStore(),
+                        products.get(i).getLocation(),
+                        products.get(i).getPhone(),
+                        products.get(i).getImg(),
+                        products.get(i).getImgStore(),
+                        products.get(i).getCode()
+                );
+                Intent intent = new Intent(context,ActivityProduct.class);
+                intent.putExtra("ITEM", itemProduct);
+                ((ActivityMain) context).startActivityForResult(intent,products.get(i).getCode());
             }
         });
 
-        viewHolder.mDetail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showToast(v, i);
-            }
-        });
-        viewHolder.mImage.setImageDrawable(products.get(i).getImg());
-        viewHolder.mImageStore.setImageDrawable(products.get(i).getImgStore());
-
-
-    }
-    public void showToast(View v, final int position){
-        Toast.makeText(v.getContext(), products.get(position).toString(), Toast.LENGTH_LONG).show();
     }
 
     @Override

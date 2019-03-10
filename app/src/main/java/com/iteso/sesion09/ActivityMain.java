@@ -1,5 +1,7 @@
 package com.iteso.sesion09;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -37,6 +39,9 @@ public class ActivityMain extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    FragmentElectronics fragmentElectronics;
+    FragmentHome fragmentHome;
+    FragmentTechnology fragmentTechnology;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,45 +84,7 @@ public class ActivityMain extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
 
-        public PlaceholderFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_activity_main, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
-    }
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -127,9 +94,18 @@ public class ActivityMain extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
          switch(position){
-             case 0: return new FragmentTechnology();
-             case 1: return new FragmentHome();
-             case 2: return new FragmentElectronics();
+             case 0:
+                 if(fragmentTechnology == null){
+                     fragmentTechnology = new FragmentTechnology();
+                 }
+             case 1:
+                 if(fragmentHome == null){
+                     fragmentHome = new FragmentHome();
+                 }
+             case 2:
+                 if(fragmentElectronics == null){
+                     fragmentElectronics = new FragmentElectronics();
+                 }
              default: return new FragmentTechnology();
          }
         }
@@ -150,6 +126,18 @@ public class ActivityMain extends AppCompatActivity {
                 case 2: return "Electronics".toUpperCase();
             }
             return null;
+        }
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == 0 || requestCode == 1 || requestCode == 2){
+            if(resultCode == Activity.RESULT_OK){
+                fragmentTechnology.onActivityResult(requestCode, resultCode, data);
+                fragmentElectronics.onActivityResult(requestCode, resultCode, data);
+                fragmentHome.onActivityResult(requestCode, resultCode, data);
+            }
         }
     }
 }
