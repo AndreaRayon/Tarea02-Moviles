@@ -135,8 +135,8 @@ public class ActivityMain extends AppCompatActivity {
         if(requestCode == 0 || requestCode == 1 || requestCode == 2){
             if(resultCode == Activity.RESULT_OK){
                 fragmentTechnology.onActivityResult(requestCode, resultCode, data);
-                fragmentElectronics.onActivityResult(requestCode, resultCode, data);
-                fragmentHome.onActivityResult(requestCode, resultCode, data);
+              //  fragmentElectronics.onActivityResult(requestCode, resultCode, data);
+               // fragmentHome.onActivityResult(requestCode, resultCode, data);
             }
         }
     }

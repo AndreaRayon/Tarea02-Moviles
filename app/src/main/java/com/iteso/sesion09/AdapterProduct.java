@@ -24,6 +24,10 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
     public AdapterProduct(ArrayList<ItemProduct> products){
         this.products = products;
     }
+    public AdapterProduct(Context context, ArrayList<ItemProduct> products){
+        this.context = context;
+        this.products = products;
+    }
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView mTitle;
         public TextView mStore;
@@ -90,15 +94,15 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
                 ItemProduct itemProduct = new ItemProduct(
                         products.get(i).getName(),
                         products.get(i).getStore(),
-                        products.get(i).getLocation(),
                         products.get(i).getPhone(),
+                        products.get(i).getLocation(),
                         products.get(i).getImg(),
                         products.get(i).getImgStore(),
                         products.get(i).getCode()
                 );
                 Intent intent = new Intent(context,ActivityProduct.class);
                 intent.putExtra("ITEM", itemProduct);
-                ((ActivityMain) context).startActivityForResult(intent,products.get(i).getCode());
+                ((ActivityMain) context).startActivityForResult(intent, products.get(i).getCode());
             }
         });
 

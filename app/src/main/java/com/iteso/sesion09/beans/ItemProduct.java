@@ -61,7 +61,7 @@ public class ItemProduct implements Parcelable {
         return 0;
     }
 
-    public static final Creator<ItemProduct> CREATOR = new Creator<ItemProduct>() {
+    public static final Parcelable.Creator<ItemProduct> CREATOR = new Parcelable.Creator<ItemProduct>() {
         @Override
         public ItemProduct createFromParcel(Parcel in) {
             return new ItemProduct(in);

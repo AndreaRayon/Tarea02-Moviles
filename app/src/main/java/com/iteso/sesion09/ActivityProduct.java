@@ -58,8 +58,8 @@ public class ActivityProduct extends AppCompatActivity {
         p2 = new ItemProduct();
         p2.setName(title.getText().toString());
         p2.setStore(store.getText().toString());
-        p2.setLocation(location.getText().toString());
         p2.setPhone(phone.getText().toString());
+        p2.setLocation(location.getText().toString());
         p2.setImg(p1.getImg());
         p2.setCode(p1.getCode());
 

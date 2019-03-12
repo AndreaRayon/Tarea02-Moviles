@@ -28,7 +28,7 @@ public class FragmentElectronics extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_technology, container, false);
-        RecyclerView recyclerView = v.findViewById(R.id.fragment_recycler_view);
+/*        RecyclerView recyclerView = v.findViewById(R.id.fragment_recycler_view);
         recyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -47,10 +47,10 @@ public class FragmentElectronics extends Fragment {
                 0, 0, 0));
 
         AdapterProduct adapterProduct = new AdapterProduct(products);
-        recyclerView.setAdapter(adapterProduct);
+        recyclerView.setAdapter(adapterProduct);*/
         return v;
     }
-    @Override
+   /* @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         ItemProduct itemProduct = data.getParcelableExtra("ITEM");
         Iterator<ItemProduct> itemProductIterator = products.iterator();
@@ -64,5 +64,5 @@ public class FragmentElectronics extends Fragment {
             i++;
         }
         mAdapter.notifyDataSetChanged();
-    }
+    }*/
 }
