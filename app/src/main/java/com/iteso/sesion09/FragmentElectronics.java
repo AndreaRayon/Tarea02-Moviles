@@ -28,7 +28,7 @@ public class FragmentElectronics extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_technology, container, false);
-/*        RecyclerView recyclerView = v.findViewById(R.id.fragment_recycler_view);
+        RecyclerView recyclerView = v.findViewById(R.id.fragment_recycler_view);
         recyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -38,19 +38,19 @@ public class FragmentElectronics extends Fragment {
                 getResources().getString(R.string.bestbuy_store),
                 getResources().getString(R.string.bestbuy_phone),
                 getResources().getString(R.string.sec_location),
-                0, 0 , 0));
+                3, 0 , 0));
 
         products.add(new ItemProduct(getResources().getString(R.string.micro_title),
                 getResources().getString(R.string.bestbuy_store),
                 getResources().getString(R.string.bestbuy_phone),
                 getResources().getString(R.string.third_location),
-                0, 0, 0));
+                2, 0, 1));
 
-        AdapterProduct adapterProduct = new AdapterProduct(products);
-        recyclerView.setAdapter(adapterProduct);*/
+        mAdapter  = new AdapterProduct(getActivity(),products);
+        recyclerView.setAdapter(mAdapter);
         return v;
     }
-   /* @Override
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         ItemProduct itemProduct = data.getParcelableExtra("ITEM");
         Iterator<ItemProduct> itemProductIterator = products.iterator();
@@ -64,5 +64,5 @@ public class FragmentElectronics extends Fragment {
             i++;
         }
         mAdapter.notifyDataSetChanged();
-    }*/
+    }
 }
