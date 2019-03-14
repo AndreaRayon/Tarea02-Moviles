@@ -44,7 +44,7 @@ public class ActivityProduct extends AppCompatActivity {
                         case 3: img.setImageResource(R.drawable.refrigerator); break;
                         case 4: img.setImageResource(R.drawable.sheets); break;
                         case 5: img.setImageResource(R.drawable.pillows); break;
-                        default: img.setImageResource(R.drawable.mac); break;
+                        default: img.setImageResource(R.drawable.pillows); break;
                     }
                 }
             }
@@ -54,6 +54,8 @@ public class ActivityProduct extends AppCompatActivity {
         setResult(RESULT_CANCELED);
         finish();
     }
+
+
     public void save(View v){
         p2 = new ItemProduct();
         p2.setName(title.getText().toString());
@@ -68,4 +70,6 @@ public class ActivityProduct extends AppCompatActivity {
         setResult(Activity.RESULT_OK, intent);
         finish();
     }
+
+
 }
