@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -98,14 +99,19 @@ public class ActivityMain extends AppCompatActivity {
                  if(fragmentTechnology == null){
                      fragmentTechnology = new FragmentTechnology();
                  }
+                 return fragmentTechnology;
              case 1:
                  if(fragmentHome == null){
                      fragmentHome = new FragmentHome();
                  }
-             case 2:
+                 return fragmentHome;
+
+             case 2 :
                  if(fragmentElectronics == null){
                      fragmentElectronics = new FragmentElectronics();
                  }
+                 return fragmentElectronics;
+
              default: return new FragmentTechnology();
          }
         }
@@ -131,12 +137,12 @@ public class ActivityMain extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == 0 || requestCode == 1 || requestCode == 2){
             if(resultCode == Activity.RESULT_OK){
                 fragmentTechnology.onActivityResult(requestCode, resultCode, data);
-              //  fragmentElectronics.onActivityResult(requestCode, resultCode, data);
-               // fragmentHome.onActivityResult(requestCode, resultCode, data);
+              fragmentElectronics.onActivityResult(requestCode, resultCode, data);
+                fragmentHome.onActivityResult(requestCode, resultCode, data);
             }
         }
     }
