@@ -42,10 +42,10 @@ public class FragmentTechnology extends Fragment {
                                     getResources().getString(R.string.bestbuy_store),
                                     getResources().getString(R.string.bestbuy_phone),
                                     getResources().getString(R.string.sec_location),
-                                    0,0,0));
+                                    1,1,1));
 
-        AdapterProduct adapterProduct = new AdapterProduct(products);
-        recyclerView.setAdapter(adapterProduct);
+        mAdapter  = new AdapterProduct(getActivity(),products);
+        recyclerView.setAdapter(mAdapter);
         return v;
     }
 
