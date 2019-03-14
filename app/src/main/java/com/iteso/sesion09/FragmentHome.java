@@ -26,7 +26,7 @@ public class FragmentHome extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_technology, container, false);
-/*        RecyclerView recyclerView = v.findViewById(R.id.fragment_recycler_view);
+       RecyclerView recyclerView = v.findViewById(R.id.fragment_recycler_view);
         recyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -36,20 +36,20 @@ public class FragmentHome extends Fragment {
                 getResources().getString(R.string.liverpool_store),
                 getResources().getString(R.string.liverpool_phone),
                 getResources().getString(R.string.third_location),
-                0, 0, 0));
+                5, 1, 0));
 
         products.add(new ItemProduct(getResources().getString(R.string.sheets_title),
                 getResources().getString(R.string.liverpool_store),
                 getResources().getString(R.string.liverpool_phone),
                 getResources().getString(R.string.first_location),
-               0, 0, 0));
+               4, 1, 1));
 
-        AdapterProduct adapterProduct = new AdapterProduct(products);
-        recyclerView.setAdapter(adapterProduct);
-        */
+        mAdapter  = new AdapterProduct(getActivity(),products);
+        recyclerView.setAdapter(mAdapter);
+
         return v;
     }
-   /* @Override
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         ItemProduct itemProduct = data.getParcelableExtra("ITEM");
         Iterator<ItemProduct> itemProductIterator = products.iterator();
@@ -63,5 +63,5 @@ public class FragmentHome extends Fragment {
             i++;
         }
         mAdapter.notifyDataSetChanged();
-    }*/
+    }
 }
